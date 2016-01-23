@@ -1,0 +1,4 @@
+Notes in case I get stuck later
+
+* great tutorial here: http://www.rosslaird.com/blog/customizing-mezzanine/
+* Django will look for a resource in all installed apps. As soon as it finds it it stops looking. Therefore resources that will override Mezzanine defaults should go in an app that is included BEFORE anything from Mezzanine.
