@@ -1,6 +1,5 @@
 #todo
-* start git repo (with .gitignore!)
-* navigation just at the top
-* no search bar at top
+
+* rss/atom icons
 * social media links
 * made with love and python in KY
