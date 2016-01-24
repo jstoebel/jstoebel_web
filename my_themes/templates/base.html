@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
 {% load pages_tags mezzanine_tags i18n staticfiles %}
-
+{% load staticfiles %}
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
     <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
 
 
 {% ifinstalled mezzanine.blog %}
@@ -20,9 +21,25 @@
 <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static "font-awesome-4.5.0/css/font-awesome.min.css" %}">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-{% if LANGUAGE_BIDI %}
+<!--MY CUSTOM CSS-->
+{% load compress %}
+
+{% if debug %}
+  {# This is the client-side way to compile less and an ok choice for local dev. #}
+    <link href="{{ STATIC_URL }}less/custom.less" media="all" rel="stylesheet/less" type="text/css"/>
+    <script src="{{ STATIC_URL }}js/less.min.js"></script>
+{% else %}
+    {# This is the nifty django-compressor way to compile your less files in css. #}
+  {% compress css %}
+    <link href="{{ STATIC_URL }}less/custom.less" media="all" rel="stylesheet" type="text/less"/>
+  {% endcompress %}
+{% endif %}
+
+    {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
 {% endif %}
 {% ifinstalled cartridge.shop %}
@@ -30,7 +47,6 @@
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
 {% endif %}
-
 
 
 {% endifinstalled %}
@@ -50,33 +66,48 @@
 <![endif]-->
 
 {% block extra_head %}{% endblock %}
-<!---->
+
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    {% block navbar_title %}
-    {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-    {% endblock%}
-</div>
-<div class="navbar-collapse collapse">
-    <!-- SEARCH BAR-->
-    <!--{% block navbar_search_form %}{% search_form "all" %}{% endblock %}-->
+    <div class="container">
+        <!-- I THINK THIS IS THE ADMIN STUFF-->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">{% trans "Toggle Navigation" %}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% block navbar_title %}
+            {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+            {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+            {% endblock%}
+        </div>
 
-    <!-- PAGES -->
-    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
-</div>
-</div>
+        <!-- LEFT NAV BAR-->
+        <div class="navbar-collapse collapse">
+            <!-- SEARCH BAR-->
+            <!--{% block navbar_search_form %}{% search_form "all" %}{% endblock %}-->
+
+            <!-- PAGES -->
+            {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="fa fa-twitter fa-4x"></a></li>
+                <li><a href="#" class="fa fa-github-square fa-3x"></a></li>
+                <li><a href="#" class="fa fa-linkedin-square fa-3x"></a></li>
+                <li><a href="#" class="fa fa-rss fa-3x"></a></li>
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
 </div>
 
 <div class="container">

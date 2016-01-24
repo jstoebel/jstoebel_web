@@ -1,5 +1,5 @@
 #todo
 
-* rss/atom icons
-* social media links
+
+* implement LESS
 * made with love and python in KY
