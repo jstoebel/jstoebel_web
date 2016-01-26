@@ -81,11 +81,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {% block navbar_title %}
+        {% block navbar_title %}
             {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-            {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-            {% endblock%}
-        </div>
+            {% if settings.SITE_TAGLINE %}
+                <p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>
+            {% endif %}
+        {% endblock%}
+    </div>
 
         <!-- LEFT NAV BAR-->
         <div class="navbar-collapse collapse">
@@ -93,13 +95,26 @@
             <!--{% block navbar_search_form %}{% search_form "all" %}{% endblock %}-->
 
             <!-- PAGES -->
-            {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 
+            <!-- THIS BLOCK AUTOMATICALLY GENERATES ALL PAGES-->
+            <!-- TODO: find a way to add an icon to the database so each page link renders with its icon-->
+            <!--{% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}-->
+
+            <!-- UNTIL I FIGURE OUT THE ABOVE TODO LETS JUST HARD CODE THE LINKS-->
+
+            <ul class="nav navbar-nav">
+                <!-- pages-->
+            </ul>
+
+            <!-- SOCIAL ICONS-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="fa fa-twitter fa-4x"></a></li>
-                <li><a href="#" class="fa fa-github-square fa-3x"></a></li>
-                <li><a href="#" class="fa fa-linkedin-square fa-3x"></a></li>
-                <li><a href="#" class="fa fa-rss fa-3x"></a></li>
+
+                <li><a href="https://twitter.com/jstoebel" target="_blank" class="fa fa-twitter fa-3x"></a></li>
+                <li><a href="https://github.com/jstoebel" target="_blank" class="fa fa-github-square fa-3x"></a></li>
+                <li><a href="https://www.linkedin.com/in/jacob-stoebel-71705223" target="_blank" class="fa fa-linkedin-square fa-3x"></a></li>
+
+                <!-- TODO LINK TO BLOG RSS-->
+                <li><a href="" class="fa fa-rss fa-3x"></a></li>
             </ul>
 
 
@@ -148,16 +163,19 @@
 <!--</div>-->
 
 <!--MAIN CONTENT-->
-<div class="col-xs-12 col-md-8 col-md-offset-2 middle">
+<div class="col-xs-12 col-sm-8 col-sm-offset-1 middle">
     {% block main %}{% endblock %}
 </div>
 
-{% comment %}
-RIGHT PANEL
+
+
     <div class="col-md-3 right">
         {% nevercache %}
-        {% include "includes/language_selector.html" %}
+
+        <!-- not using these-->
+        <!--{% include "includes/language_selector.html" %}-->
         <!--{% include "includes/user_panel.html" %}-->
+
         {% endnevercache %}
         <div class="panel panel-default">
         <div class="panel-body">
@@ -169,7 +187,7 @@ RIGHT PANEL
         </div>
         </div>
     </div>
-{% endcomment %}
+
 
 </div>
 </div>

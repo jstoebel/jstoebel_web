@@ -1,5 +1,8 @@
 #todo
 
 
-* implement LESS
+* pages
+    ** home (blog)
+    ** About me
 * made with love and python in KY
+* shorten length of blog preview
