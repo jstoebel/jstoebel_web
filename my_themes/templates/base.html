@@ -29,12 +29,12 @@
 
 {% if debug %}
   {# This is the client-side way to compile less and an ok choice for local dev. #}
-    <link href="{{ STATIC_URL }}less/custom.less" media="all" rel="stylesheet/less" type="text/css"/>
+    <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
     <script src="{{ STATIC_URL }}js/less.min.js"></script>
 {% else %}
     {# This is the nifty django-compressor way to compile your less files in css. #}
   {% compress css %}
-    <link href="{{ STATIC_URL }}less/custom.less" media="all" rel="stylesheet" type="text/less"/>
+    <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet" type="text/less"/>
   {% endcompress %}
 {% endif %}
 
@@ -196,7 +196,11 @@
 {% page_menu "pages/menus/footer.html" %}
 
 <div class="row">
-<p class="site-info text-center">
+<p class="site-info site-info1 text-center">
+    Made with <span class="fa fa-heart"></span> and Python in KY
+</p>
+
+<p class="site-info site-info2 text-center">
     {% trans "Powered by" %}
     <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
     <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}

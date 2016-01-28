@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
 
+<link href="{{ STATIC_URL }}less/blog.less" media="all" rel="stylesheet/less" type="text/css"/>
+
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
@@ -76,7 +78,7 @@
 {% for blog_post in blog_posts.object_list %}
     {% block blog_post_list_post_title %}
         {% editable blog_post.title %}
-            <h2>
+            <h2 class="blog-title">
                 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
             </h2>
         {% endeditable %}
