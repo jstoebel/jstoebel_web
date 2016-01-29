@@ -22,20 +22,22 @@
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
 <link rel="stylesheet" href="{% static "font-awesome-4.5.0/css/font-awesome.min.css" %}">
+
+    <!--glyphs for us states-->
+<link rel="stylesheet" href="{% static "stately/assets/css/stately.css" %}">
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
 
+
+
+
 <!--MY CUSTOM CSS-->
+    <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
+    {% block extra_css %}{% endblock %}
+
 {% load compress %}
 
 {% if debug %}
-  {# This is the client-side way to compile less and an ok choice for local dev. #}
-    <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
     <script src="{{ STATIC_URL }}js/less.min.js"></script>
-{% else %}
-    {# This is the nifty django-compressor way to compile your less files in css. #}
-  {% compress css %}
-    <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet" type="text/less"/>
-  {% endcompress %}
 {% endif %}
 
     {% if LANGUAGE_BIDI %}
@@ -49,7 +51,7 @@
 
 
 {% endifinstalled %}
-{% block extra_css %}{% endblock %}
+
 {% endcompress %}
 
 {% compress js %}
@@ -168,7 +170,7 @@
 
 
 
-    <div class="col-md-3 right">
+    <div class="col-sm-3 right">
         {% nevercache %}
 
         <!-- not using these-->
@@ -197,8 +199,10 @@
 
 <div class="row">
 <p class="site-info site-info1 text-center">
-    Made with <span class="fa fa-heart"></span> and Python in KY
+    Made with <span class="fa fa-heart"></span> and Python in <ul class="stately"><li data-state="ky" id="ky"></li></ul>
 </p>
+
+
 
 <p class="site-info site-info2 text-center">
     {% trans "Powered by" %}

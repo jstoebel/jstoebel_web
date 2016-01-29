@@ -5,5 +5,4 @@
     ** About me
     ** my projects
 
-* made with love and python in KY
-* shorten length of blog preview
+* breadcrumbs: / -> Home; /blog -> empty
