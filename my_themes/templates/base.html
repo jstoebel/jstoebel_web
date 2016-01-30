@@ -22,17 +22,20 @@
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
 <link rel="stylesheet" href="{% static "font-awesome-4.5.0/css/font-awesome.min.css" %}">
-
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ <link rel="stylesheet" href="{% static "state_type/webfont/stateface-regular-webfont.ttf" %}">
     <!--glyphs for us states-->
 <link rel="stylesheet" href="{% static "stately/assets/css/stately.css" %}">
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
+
 
 
 
 
 <!--MY CUSTOM CSS-->
+
+
+<link href="{{ STATIC_URL }}less/blog.less" media="all" rel="stylesheet/less" type="text/css"/>
     <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
-    {% block extra_css %}{% endblock %}
 
 {% load compress %}
 
@@ -199,7 +202,7 @@
 
 <div class="row">
 <p class="site-info site-info1 text-center">
-    Made with <span class="fa fa-heart"></span> and Python in <ul class="stately"><li data-state="ky" id="ky"></li></ul>
+    Made with <i class="fa fa-heart"></i> and <i class="ionicons ion-social-python"></i> in <i id="ky-icon">Q</i>.
 </p>
 
 
