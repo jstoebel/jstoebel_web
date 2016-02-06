@@ -75,126 +75,19 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-        <!-- I THINK THIS IS THE ADMIN STUFF-->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        {% block navbar_title %}
-            {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-            {% if settings.SITE_TAGLINE %}
-                <p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>
-            {% endif %}
-        {% endblock%}
-    </div>
+        <div class="left-col">
 
-        <!-- LEFT NAV BAR-->
-        <div class="navbar-collapse collapse">
-            <!-- SEARCH BAR-->
-            <!--{% block navbar_search_form %}{% search_form "all" %}{% endblock %}-->
-
-            <!-- PAGES -->
-
-            <!-- THIS BLOCK AUTOMATICALLY GENERATES ALL PAGES-->
-            <!-- TODO: find a way to add an icon to the database so each page link renders with its icon-->
-            <!--{% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}-->
-
-            <!-- UNTIL I FIGURE OUT THE ABOVE TODO LETS JUST HARD CODE THE LINKS-->
-
-            <ul class="nav navbar-nav">
-                <!-- pages-->
-            </ul>
-
-            <!-- SOCIAL ICONS-->
-            <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="https://twitter.com/jstoebel" target="_blank" class="fa fa-twitter fa-3x"></a></li>
-                <li><a href="https://github.com/jstoebel" target="_blank" class="fa fa-github-square fa-3x"></a></li>
-                <li><a href="https://www.linkedin.com/in/jacob-stoebel-71705223" target="_blank" class="fa fa-linkedin-square fa-3x"></a></li>
-
-                <!-- TODO LINK TO BLOG RSS-->
-                <li><a href="/blog/feeds/rss/" class="fa fa-rss fa-3x"></a></li>
-            </ul>
-
+Intently stare at the same spot ears back wide eyed, so stare at ceiling, or make meme, make cute face for meow so plan steps for world domination. Stretch play riveting piece on synthesizer keyboard. Chase after silly colored fish toys around the house eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap, but hopped up on catnip use lap as chair, or all of a sudden cat goes crazy cat is love, cat is life. Pee in the shoe eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap. Hack up furballs poop in the plant pot and steal the warm chair right after you get up pee in human's bed until he cleans the litter box immediately regret falling into bathtub give attitude damn that dog . Hide when guests come over russian blue meowing non stop for food. Eat and than sleep on your face need to chase tail, but damn that dog chase laser eat a plant, kill a hand. Hack up furballs thinking longingly about tuna brine burrow under covers, and where is my slave? I'm getting hungry but eat prawns daintily with a claw then lick paws clean wash down prawns with a lap of carnation milk then retire to the warmest spot on the couch to claw at the fabric before taking a catnap. Jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed drink water out of the faucet. Why must they do that attack feet climb a tree, wait for a fireman jump to fireman then scratch his face. Chase ball of string leave dead animals as gifts jump off balcony, onto stranger's head. Lick butt find empty spot in cupboard and sleep all day and has closed eyes but still sees you give attitude, yet scratch leg; meow for can opener to feed me or who's the baby, but give attitude. Mark territory.
 
         </div>
 
-
-
-    </div>
-</div>
-
-<div class="container">
-
-{% nevercache %}
-{% if messages %}
-<div class="messages">
-{% for message in messages %}
-<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
-</div>
-{% endif %}
-{% endnevercache %}
-
-<h1>{% block title %}{% endblock %}</h1>
-
-<!--BREADCRUMBS-->
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
-
-</div>
-
-<!--MAIN CONTENT OF PAGE!-->
-<div class="container">
-<div class="row">
-
-<!--PAGE TREE LEFT SIDE OF PAGE-->
-<!--<div class="col-md-2 left">-->
-    <!--{% block left_panel %}-->
-    <!--<div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>-->
-    <!--{% endblock %}-->
-<!--</div>-->
-
-<!--MAIN CONTENT-->
-<div class="col-xs-12 col-sm-8 col-sm-offset-1 middle">
-    {% block main %}{% endblock %}
-</div>
-
-
-
-    <div class="col-sm-3 right">
-        {% nevercache %}
-
-        <!-- not using these-->
-        <!--{% include "includes/language_selector.html" %}-->
-        <!--{% include "includes/user_panel.html" %}-->
-
-        {% endnevercache %}
-        <div class="panel panel-default">
-        <div class="panel-body">
-        {% block right_panel %}
-        {% ifinstalled mezzanine.twitter %}
-        {% include "twitter/tweets.html" %}
-        {% endifinstalled %}
-        {% endblock %}
-        </div>
+        <div class="mid-col">
+            main content goes here
         </div>
     </div>
 
 
-</div>
-</div>
 
 <footer>
 <div class="container">

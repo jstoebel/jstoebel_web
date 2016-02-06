@@ -5,4 +5,6 @@
     ** About me
     ** my projects
 
+* change nav bar to side bar with my picture
+
 * breadcrumbs: / -> Home; /blog -> empty

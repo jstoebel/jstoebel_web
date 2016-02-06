@@ -52,7 +52,7 @@
 
 {% if tag or category or year or month or author %}
     {% block blog_post_list_filterinfo %}
-    <p>
+    <p class="filter-status">
     {% if tag %}
         {% trans "Viewing posts tagged" %} {{ tag }}
     {% else %}{% if category %}
@@ -131,6 +131,7 @@
 {% endblock %}
 
 {% block blog_post_list_post_links %}
+
 <div class="blog-list-detail">
     {% keywords_for blog_post as tags %}
     {% if tags %}
@@ -170,5 +171,8 @@
 {% endblock %}
 
 {% block right_panel %}
+<!--THE BLOG FILTER PANEL-->
+
 {% include "blog/includes/filter_panel.html" %}
+
 {% endblock %}

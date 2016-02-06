@@ -12,7 +12,6 @@
 @green: #54A846;
 @gray: #EEEEEE;
 
-@nav_width: 320px;
 
  @font-face {
      font-family: 'StateFaceRegular';
@@ -27,14 +26,7 @@
 
 * {
 
-
     font-family: @text-font;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    height: 100%;
 }
 
 a,
@@ -49,45 +41,49 @@ a:visited {
 
 //NAV BAR
 
+.navbar-default {
+  background-color: black;
+  border-color: black;
+}
 
-.container {
-    min-height: 100%;
-    position: relative;
+.navbar {
+    background-image: none;
 
-    .left-col {
-        background: rgba(0, 0, 0, 0)  no-repeat scroll center center / cover ;
-        border-right: 1px solid #333232;
-        color: black;
-        float: left;
-        font-size: 0.8em;
-        height: 100%;
-        //position: fixed;
-        text-align: right;
-        transition: all 0.2s ease-in 0s;
-        width: @nav_width;
-        z-index: 1;
-        #header {
-            border-bottom: medium none;
-            height: auto;
-            padding: 30px 40px 0 0;
+    .navbar-brand,  {
+        /* the nav bar brand */
+        color: white;
+        font-size: 16pt;
+        font-family: @header-font;
+        border: none;
+    }
+
+    a.navbar-brand:hover{
+        /* the nav bar brand */
+        color: @green;
+    }
+
+
+    .navbar-nav li a, .navbar-nav li a:visited{
+    /* all navbar items (except the brand) */
+        color: white;
+        border: none;
+
+    }
+    .navbar-nav li a:hover {
+        color: @green;
+    }
+
+
+}
+
+.navbar-nav li a:not(.fa) {
+        /* non fa icons */
+        font-size: 12pt;
+        .active {
+            color: white;
         }
-    }
-
-    .mid-col {
-    float: left;
-    margin-left: @nav_width;
-    }
 }
 
-
-
-#header {
-    border-bottom: medium none;
-    height: auto;
-    padding: 30px 40px 0 0;
-}
-
-.container
 
 //BREADCRUMB
 .breadcrumb {

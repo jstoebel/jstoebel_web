@@ -1,6 +1,7 @@
 //blog.less
 @import "base.less";
 
+//BLOG POST LIST
 
 a.blog-title,
 a.blog-title:hover,
@@ -11,7 +12,93 @@ a.blog-title:visited {
     border-bottom: none;
 }
 
-.blog-category.badge {
+a.blog-category.badge,
+a.blog-category.badge:hover,
+a.blog-category.badge:visited{
     border: none;
+    background-color: @green;
+    color: white;
+}
+
+//FILTER STATUS
+
+.filter-status {
+    background-color: @green;
+    padding: 5px;
+    border-radius: 4px;
+
+}
+
+//BLOG FILTER PANEL
+
+
+/*
+.right-panel{
+    background-color: @green;
+    border: none;
+
+    h3,h6 {
+        color: white;
+    }
+}
+
+*/
+.right-panel{
+    background-color: @green;
+    border: none;
+    color: black;
+    .panel-body{
+        font-style: italic;
+        h3 {
+            font-family: @header-font;
+            font-style: normal;
+        }
+
+
+        h6{
+            font-size: 14pt;
+            font-style: normal;
+        }
+
+        ul li{
+            font-size: 10pt;
+            font-style: italic;
+        }
+    }
+
+}
+
+//BLOG POST DETAIL
+
+h1 div.blog-title {
+    font-family: @header-font;
+}
+
+.share-btns {
+    text-align: right;
+
+    a.share,
+    a.share:hover,
+    a.share:visited{
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        border: none;
+        span {
+            font-size: 20pt;
+            position: relative;
+            left: 0%;
+            bottom: -25%;
+        }
+    }
+    a.share:hover{
+        color: @green;
+    }
+
+}
+
+.previous, .next{
     background-color: @green;
 }
