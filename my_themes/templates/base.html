@@ -161,14 +161,13 @@
 
 <!--MAIN CONTENT OF PAGE!-->
 <div class="container-fluid">
-<h1>{% block title %}{% endblock %}</h1>
     <div class="row">
 
 
-    <div id="side-bar" class="col-sm-2 sidebar">
-
-        {% include "sidebar.html" %}
-
+    <div id="left-bar" class="col-sm-2 sidebar-outer">
+        <div id="left-bar-inner" class="sidebar">
+            {% include "sidebar.html" %}
+        </div>
     </div>
 
 
@@ -183,12 +182,13 @@
 
 <!--MAIN CONTENT-->
 <div class="col-xs-12 col-sm-8 center">
+    <h1>{% block title %}{% endblock %}</h1>
     {% block main %}{% endblock %}
 </div>
 
 
 
-    <div class="hidden-xs col-sm-2 left">
+    <div class="hidden-xs col-sm-2 left sidebar-outer">
         {% nevercache %}
 
         <!-- not using these-->
@@ -196,6 +196,7 @@
         <!--{% include "includes/user_panel.html" %}-->
 
         {% endnevercache %}
+        {% if request.path == '/' or 'blog' in request.path %}
         <div class="panel sidebar panel-default right-panel">
         <div class="panel-body">
         {% block right_panel %}
@@ -205,6 +206,9 @@
         {% endblock %}
         </div>
         </div>
+        {% endif %}
+
+
     </div>
 
 
