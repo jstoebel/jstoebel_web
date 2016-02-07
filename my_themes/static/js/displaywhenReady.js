@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    $("body").removeClass("hidden")    //display everything when its all ready
+    $("html").removeClass("hide-me")    //display everything when its all ready
 })

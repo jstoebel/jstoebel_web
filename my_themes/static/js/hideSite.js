@@ -1,0 +1,1 @@
+$('html').addClass('hide-me'); //add a class to hide the site
