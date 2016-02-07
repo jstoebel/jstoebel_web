@@ -1,10 +1,15 @@
 #todo
 
 * blog post detail
-
+* featured image?
 
 * pages
     ** home (blog)
     ** About me
     ** my projects
+        -Dashboard (not ready yet)
+        -Software Engineering
+        -Data structures
+        -Free Code Camp
+        -Freelance  work (not ready yet)
     ** resources (links)
