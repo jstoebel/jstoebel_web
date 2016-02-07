@@ -5,18 +5,26 @@
 {% if branch_level == 0 %}
 <ul class="nav navbar-nav">
     {% for page in page_branch %}
+
+    {% comment %}
+    <!-- HOME BUTTON-->
     {% if not has_home and page.is_primary and forloop.first %}
     <li{% if on_home %} {% endif %} id="dropdown-menu-home">
         <a href="{% url "home" %}">{% trans "Home" %}</a>
     </li>
     {% endif %}
+    {% endcomment %}
+
+
     {% if page.in_menu %}
     <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
                {% if page.is_current_or_ascendant %}{% endif %}"
         id="{{ page.html_id }}">
-        <a href="{{ page.get_absolute_url }}"
+        <a  href="{{ page.get_absolute_url }}"
         {% if page.has_children_in_menu %}
-        class="dropdown-toggle disabled" data-toggle="dropdown"
+        class="dropdown-toggle disabled word-link" data-toggle="dropdown"
+        {% else %}
+        class="word-link"
         {% endif %}>
             {{ page.title }}
             {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}

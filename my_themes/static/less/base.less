@@ -1,8 +1,11 @@
+
 //base.less
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
+//@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+@header-font: Roboto;
+@text-font: Droid Serif;
 
 @dark_blue: #055692;
 @comp_gold: #925a05;
@@ -25,7 +28,7 @@
 
 * {
 
-    font-family: Open Sans;
+    font-family: @text-font;
 }
 
 a,
@@ -52,13 +55,17 @@ a:visited {
         /* the nav bar brand */
         color: white;
         font-size: 16pt;
-        font-family: Roboto;
+        font-family: @header-font;
         border: none;
     }
 
     a.navbar-brand:hover{
         /* the nav bar brand */
         color: @green;
+    }
+
+    .word-link{
+        font-family: @header-font;
     }
 
 
@@ -73,6 +80,8 @@ a:visited {
     }
 
 
+
+
 }
 
 .navbar-nav li a:not(.fa) {
@@ -83,6 +92,41 @@ a:visited {
         }
 }
 
+//PANELS (GENERAL)
+
+.panel {
+    color: black;
+}
+
+//SIDEBARS
+
+.sidebar {
+    border-radius: 4pt;
+    background-color: @green;
+}
+
+
+#headshot {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 1pt black solid;
+}
+
+#bio {
+    color: black;
+
+    a,
+    a:hover,
+    a:visited {
+        color: black;
+        text-decoration: none;
+        border-bottom: 2px solid black;
+
+    }
+}
 
 //BREADCRUMB
 .breadcrumb {

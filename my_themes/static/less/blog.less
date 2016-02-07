@@ -11,7 +11,16 @@ a.blog-title:visited {
     border-bottom: none;
 }
 
-.blog-category.badge {
+
+a.blog-category.badge,
+a:visited.blog-category.badge,
+a:hover.blog-category.badge,
+a:active.blog-category.badge{
+    color: black;
     border: none;
     background-color: @green;
+}
+
+a:hover.blog-category.badge {
+    opacity: 0.75;
 }

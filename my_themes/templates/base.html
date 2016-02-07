@@ -25,15 +25,9 @@
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
  <link rel="stylesheet" href="{% static "state_type/webfont/stateface-regular-webfont.ttf" %}">
     <!--glyphs for us states-->
-<link rel="stylesheet" href="{% static "stately/assets/css/stately.css" %}">
-
-
-
-
+<!--<link rel="stylesheet" href="{% static "stately/assets/css/stately.css" %}">-->
 
 <!--MY CUSTOM CSS-->
-
-
 <link href="{{ STATIC_URL }}less/blog.less" media="all" rel="stylesheet/less" type="text/css"/>
     <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
 
@@ -58,9 +52,16 @@
 {% endcompress %}
 
 {% compress js %}
+
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+    <script src="{% static "js/displaywhenReady.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+
+
+<!--MY JS-->
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
+
+
 {% block extra_js %}{% endblock %}
 {% endcompress %}
 
@@ -73,9 +74,10 @@
 
 </head>
 
-<body id="{% block body_id %}body{% endblock %}">
+<body id="{% block body_id %}body{% endblock %}" class="hidden">
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<!--<div class="navbar navbar-default nav-stacked affix" role="navigation">-->
     <div class="container">
         <!-- I THINK THIS IS THE ADMIN STUFF-->
         <div class="navbar-header">
@@ -88,7 +90,7 @@
         {% block navbar_title %}
             {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
             {% if settings.SITE_TAGLINE %}
-                <p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>
+                <p class="navbar-text visible-md">{{ settings.SITE_TAGLINE }}</p>
             {% endif %}
         {% endblock%}
     </div>
@@ -102,9 +104,9 @@
 
             <!-- THIS BLOCK AUTOMATICALLY GENERATES ALL PAGES-->
             <!-- TODO: find a way to add an icon to the database so each page link renders with its icon-->
-            <!--{% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}-->
+            {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 
-            <!-- UNTIL I FIGURE OUT THE ABOVE TODO LETS JUST HARD CODE THE LINKS-->
+            <!-- UNTIL I FIGURE OUT THE ABOVE LETS JUST HARD CODE THE LINKS-->
 
             <ul class="nav navbar-nav">
                 <!-- pages-->
@@ -129,6 +131,8 @@
     </div>
 </div>
 
+
+
 <div class="container">
 
 {% nevercache %}
@@ -144,20 +148,31 @@
 {% endif %}
 {% endnevercache %}
 
-<h1>{% block title %}{% endblock %}</h1>
 
-<!--BREADCRUMBS-->
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
+
+<!--BREADCRUMBS: not using them now but saving for later-->
+<!--<ul class="breadcrumb">-->
+<!--{% spaceless %}-->
+<!--{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}-->
+<!--{% endspaceless %}-->
+<!--</ul>-->
 
 </div>
 
 <!--MAIN CONTENT OF PAGE!-->
-<div class="container">
-<div class="row">
+<div class="container-fluid">
+<h1>{% block title %}{% endblock %}</h1>
+    <div class="row">
+
+
+    <div id="side-bar" class="col-sm-2 sidebar">
+
+        {% include "sidebar.html" %}
+
+    </div>
+
+
+
 
 <!--PAGE TREE LEFT SIDE OF PAGE-->
 <!--<div class="col-md-2 left">-->
@@ -167,13 +182,13 @@
 <!--</div>-->
 
 <!--MAIN CONTENT-->
-<div class="col-xs-12 col-sm-8 col-sm-offset-1 middle">
+<div class="col-xs-12 col-sm-8 center">
     {% block main %}{% endblock %}
 </div>
 
 
 
-    <div class="col-sm-3 right">
+    <div class="hidden-xs col-sm-2 left">
         {% nevercache %}
 
         <!-- not using these-->
@@ -181,7 +196,7 @@
         <!--{% include "includes/user_panel.html" %}-->
 
         {% endnevercache %}
-        <div class="panel panel-default">
+        <div class="panel sidebar panel-default right-panel">
         <div class="panel-body">
         {% block right_panel %}
         {% ifinstalled mezzanine.twitter %}
@@ -198,7 +213,7 @@
 
 <footer>
 <div class="container">
-{% page_menu "pages/menus/footer.html" %}
+
 
 <div class="row">
 <p class="site-info site-info1 text-center">

@@ -101,7 +101,9 @@
                 {% if categories %}
 
                 {% for category in categories %}
-                    <a class="blog-category badge" href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %} {% endif %}
+                    <a class="blog-category badge" href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>
+
+            {% if not forloop.last %} {% endif %}
                 {% endfor %}
                 {% endif %}
             {% endwith %}

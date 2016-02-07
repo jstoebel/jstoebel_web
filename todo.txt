@@ -4,5 +4,4 @@
     ** home (blog)
     ** About me
     ** my projects
-
-* breadcrumbs: / -> Home; /blog -> empty
+    ** resources (links)
