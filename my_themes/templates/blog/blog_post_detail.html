@@ -99,15 +99,15 @@
 <ul class="pager">
 {% with blog_post.get_previous_by_publish_date as previous %}
 {% if previous %}
-<li class="previous">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+<li class="prev-next previous">
+    <a href="{{ previous.get_absolute_url }}" class="prev-next">&larr; {{ previous }}</a>
 </li>
 {% endif %}
 {% endwith %}
 {% with blog_post.get_next_by_publish_date as next %}
 {% if next %}
 <li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    <a href="{{ next.get_absolute_url }}" class="prev-next">{{ next }} &rarr;</a>
 </li>
 {% endif %}
 {% endwith %}

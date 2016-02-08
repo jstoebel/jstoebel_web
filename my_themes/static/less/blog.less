@@ -22,7 +22,7 @@ a:active.blog-category.badge{
 }
 
 a:hover.blog-category.badge {
-    opacity: 0.75;
+    opacity: @hover-opacity
 }
 
 //SOCIAL MEDIA BUTTONS
@@ -32,4 +32,16 @@ a:hover.blog-category.badge {
     height: 30px;
     border-radius: 50%;
 
+}
+
+//PREVIOUS NEXT BUTTONS
+
+.pager li > a,
+.pager li > a:visited,
+.pager li > a:active {
+    background-color: @green;
+}
+
+.pager li > a:hover {
+    opacity: @hover-opacity;
 }
