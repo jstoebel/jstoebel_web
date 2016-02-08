@@ -1,7 +1,10 @@
 #todo
 
+FOR LATER
+
 * blog post detail
-* featured image?
+
+FOR LATER
 
 * pages
     ** home (blog)
@@ -13,3 +16,5 @@
         -Free Code Camp
         -Freelance  work (not ready yet)
     ** resources (links)
+
+* featured image?
