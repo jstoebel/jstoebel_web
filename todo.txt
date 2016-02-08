@@ -3,6 +3,7 @@
 FOR LATER
 
 * blog post detail
+* filter by month doesn't work!
 
 FOR LATER
 
