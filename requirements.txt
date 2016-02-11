@@ -1,6 +1,5 @@
 Mezzanine==4.1.0
 Django==1.9.1
-Mezzanine==4.1.0
 Pillow==3.1.0
 South==1.0.2
 beautifulsoup4==4.4.1

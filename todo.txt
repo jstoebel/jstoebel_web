@@ -1,9 +1,9 @@
 #todo
 
-FOR LATER
+FOR FIRST DEPLOY
 
-* blog post detail
-* filter by month doesn't work!
+
+DEPLOY ON PythonAnywhere
 
 FOR LATER
 

@@ -4,6 +4,8 @@ import os
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
+# import django.forms.utils
+# import mezzanine_pagedown.widgets.PageDownWidget
 
 
 ######################
@@ -233,6 +235,7 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    "mezzanine_pagedown",   # for code blocks
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -340,3 +343,14 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+
+#####################
+# PAGEDOWN SETTINGS #
+#####################
+RICHTEXT_WIDGET_CLASS = 'mezzanine_pagedown.widgets.PageDownWidget'
+RICHTEXT_FILTER = 'mezzanine_pagedown.filters.custom'
+RICHTEXT_FILTERS = (RICHTEXT_FILTER,)
+PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra','codehilite','toc')
+RICHTEXT_FILTER_LEVEL = 3
+PAGEDOWN_SERVER_SIDE_PREVIEW = True
