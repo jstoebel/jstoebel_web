@@ -17,6 +17,8 @@ admin.autodiscover()
 # to the project's homepage.
 
 urlpatterns = patterns("",
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', 
+        {'document_root': settings.STATIC_ROOT}),
     ("^pagedown/", include(mezzanine_pagedown.urls)),
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.

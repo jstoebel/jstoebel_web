@@ -179,23 +179,62 @@ CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/static/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_final')
+STATIC_URL = "/static/"
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_COMPILERS = (
+                'pipeline.compilers.coffee.CoffeeScriptCompiler',
+                'pipeline.compilers.stylus.StylusCompiler',
+                'pipeline.compilers.stylus.StylusCompiler',
+                'pipeline.compilers.less.LessCompiler'
+                )
+
+PIPELINE_JS = {
+            'main': {
+                'source_filenames': (
+                        'admin/js/*.js'
+                        'css/*.css',
+                                    ),
+                'output_filename': 'js/main.js',
+                    },
+                'vendor': {
+                    'source_filenames': (
+                        'vendor/jquery.min.js',
+                        'vendor/bootstrap.min.js',
+                                        ),
+                        'output_filename': 'js/vendor.js',
+                            }
+                }
+
+PIPELINE_CSS = {
+            'main': {
+                'source_filenames': (
+                      'less/*.less',
+                                    ),
+                      'output_filename': 'css/main.css',
+                    }
+            }
+
+#URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+MEDIA_URL = "/media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
-
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = "uploads/"
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_APP
 
@@ -235,6 +274,7 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    "pipeline",
     "mezzanine_pagedown",   # for code blocks
     "django.contrib.admin",
     "django.contrib.auth",
@@ -257,7 +297,7 @@ INSTALLED_APPS = (
     # "mezzanine.accounts",
     # "mezzanine.mobile",
 )
-
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.

@@ -1,10 +1,5 @@
 #todo
 
-FOR FIRST DEPLOY
-
-
-DEPLOY ON PythonAnywhere
-
 FOR LATER
 
 * pages
