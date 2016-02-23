@@ -2,6 +2,8 @@
 
 FOR LATER
 
+* the filter bar sucks
+* prev/next blog buttons: limit to col-6
 * pages
     ** home (blog)
     ** About me

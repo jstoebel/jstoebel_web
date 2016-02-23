@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 # import django.forms.utils
 # import mezzanine_pagedown.widgets.PageDownWidget
 
+PIPELINE = {}
 
 ######################
 # MEZZANINE SETTINGS #
@@ -81,7 +82,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+#BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
@@ -94,7 +95,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://jstoebel.pythonanywhere.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -120,9 +121,9 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = True
+DEBUG = False
 
-INTERNAL_IPS = ('127.0.0.1',)       #need this for {% if debug %} to work in templates
+INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost')       #need this for {% if debug %} to work in templates
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -192,7 +193,11 @@ STATIC_URL = "/static/"
 
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
+STATICFILES_FINDERS = (
+            'django.contrib.staticfiles.finders.FileSystemFinder',
+                'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                    'pipeline.finders.PipelineFinder',
+                    )
 PIPELINE_COMPILERS = (
                 'pipeline.compilers.coffee.CoffeeScriptCompiler',
                 'pipeline.compilers.stylus.StylusCompiler',
@@ -203,8 +208,8 @@ PIPELINE_COMPILERS = (
 PIPELINE_JS = {
             'main': {
                 'source_filenames': (
-                        'admin/js/*.js'
-                        'css/*.css',
+                        'admin/js/*.js',
+                        'js/*.js',
                                     ),
                 'output_filename': 'js/main.js',
                     },
@@ -220,11 +225,46 @@ PIPELINE_JS = {
 PIPELINE_CSS = {
             'main': {
                 'source_filenames': (
-                      'less/*.less',
+                      'less/base.less',
+                      'css/*.css',
+                      'mezzanine/*.css',
                                     ),
                       'output_filename': 'css/main.css',
                     }
             }
+
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor asfafa',
+    'CSSMIN_BINARY': 'cssmin',
+    'JS_COMPRESSOR': 'pipeline.compressors.slimit.SlimItCompressor',
+    'STYLESHEETS': {
+        'main': {
+            'source_filenames': (
+              'css/*.css',
+              'less/base.less',
+              'less/blog.less',
+              'mezzanine/*.css',
+            ),
+            'output_filename': 'css/main.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    },
+    'JAVASCRIPT': {
+        'main': {
+            'source_filenames': (
+                'admin/js/*.js',
+                'js/*.js',
+            ),
+            'output_filename': 'js/main.js',
+        }
+    }
+}
+
+
 
 #URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.

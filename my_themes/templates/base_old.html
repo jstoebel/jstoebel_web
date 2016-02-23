@@ -23,38 +23,54 @@
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link rel="stylesheet" href="{% static "state_type/webfont/stateface-regular-webfont.ttf" %}">
 
-{% load compress %}
 
 {% compress css %}
-<!--LOAD ORIGINAL FILE -->
 <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+    <!--glyphs for us states-->
+<!--<link rel="stylesheet" href="{% static "stately/assets/css/stately.css" %}">-->
+
+<!-- hide the site if js is enabled-->
 <link rel="stylesheet" href="{% static "css/hide_site.css" %}">
+<script src="{{ STATIC_URL }}js/hideSite.js"></script>
+
+<!--MY CUSTOM CSS-->
 <link href="{{ STATIC_URL }}less/blog.less" media="all" rel="stylesheet/less" type="text/css"/>
 <link href="{{ STATIC_URL }}less/base.less" media="all" rel="stylesheet/less" type="text/css"/>
-    {% ifinstalled cartridge.shop %}
-            <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-        {% if LANGUAGE_BIDI %}
-            <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-        {% endif %}
-    {% endifinstalled %}
-    {% if LANGUAGE_BIDI %}
-        <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
-    {% endif %}
-{% endcompress %}
 
 {% load compress %}
-{% compress js %}
-<script src="{{ STATIC_URL }}js/hideSite.js"></script>
 
 <script src="{{ STATIC_URL }}js/less.min.js"></script>
 
 
+
+
+
+    {% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+
+
+{% endifinstalled %}
+
+{% endcompress %}
+
+{% compress js %}
+
 <script src="{% static "js/displaywhenReady.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+
+
 <!--MY JS-->
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
+
+
 {% block extra_js %}{% endblock %}
 {% endcompress %}
 
