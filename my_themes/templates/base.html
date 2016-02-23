@@ -174,35 +174,12 @@
 <!--</div>-->
 
 <!--MAIN CONTENT-->
-<div class="col-xs-12 col-sm-8 center">
+<div class="col-xs-12 col-sm-10 center">
     <h1 class="page-title">{% block title %}{% endblock %}</h1>
     {% block main %}{% endblock %}
 </div>
 
 
-
-    <div class="hidden-xs col-sm-2 left sidebar-outer">
-        {% nevercache %}
-
-        <!-- not using these-->
-        <!--{% include "includes/language_selector.html" %}-->
-        <!--{% include "includes/user_panel.html" %}-->
-
-        {% endnevercache %}
-        {% if request.path == '/' or 'blog' in request.path %}
-        <div class="panel sidebar panel-default right-panel">
-        <div class="panel-body">
-        {% block right_panel %}
-        {% ifinstalled mezzanine.twitter %}
-        {% include "twitter/tweets.html" %}
-        {% endifinstalled %}
-        {% endblock %}
-        </div>
-        </div>
-        {% endif %}
-
-
-    </div>
 
 
 </div>
