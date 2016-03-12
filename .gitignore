@@ -1,8 +1,12 @@
 *.pyc
 *.pyo
 *.db
+uploads/*
 .DS_Store
 .coverage
 local_settings.py
 /static
 /staticfiles
+\<local_tokens_filepath\>
+local_tokens
+backup/*

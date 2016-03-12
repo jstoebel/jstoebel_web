@@ -130,7 +130,7 @@
 {% block blog_post_list_post_content %}
 {% editable blog_post.content %}
 <div class="body-text">
-    {{ blog_post.description_from_content|safe|truncatechars:1000}}
+  {{ blog_post.description_from_content|safe|truncatechars:1000}}
 
 {% if blog_post.description_from_content|length > 1000 %}
 <!--add read more link if post was truncated-->
